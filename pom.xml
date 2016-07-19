@@ -75,5 +75,10 @@
             <artifactId>google-api-services-youtube</artifactId>
             <version>v3-rev174-1.22.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.typesafe</groupId>
+            <artifactId>config</artifactId>
+            <version>1.3.0</version>
+        </dependency>
     </dependencies>
 </project>

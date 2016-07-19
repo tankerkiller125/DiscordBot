@@ -6,6 +6,7 @@ import org.eclipse.egit.github.core.service.RepositoryService;
 import sx.blah.discord.api.IListener;
 import sx.blah.discord.handle.impl.events.MessageReceivedEvent;
 
+import static ml.rhodes.discordbot.Core.config;
 import static ml.rhodes.discordbot.Core.discordClient;
 
 public class RepoStats implements IListener<MessageReceivedEvent> {
@@ -19,7 +20,7 @@ public class RepoStats implements IListener<MessageReceivedEvent> {
                 String[] repo = args[1].split("/");
 
                 GitHubClient client = new GitHubClient();
-                client.setOAuth2Token("93802e3e47414235d7c473dfc40eadb204ef6c4c");
+                client.setOAuth2Token(config.getString("apiKeys.github"));
                 RepositoryService service = new RepositoryService(client);
                 Repository repository = service.getRepository(repo[0], repo[1]);
                 discordClient.getChannelByID(channel).sendMessage(
@@ -31,6 +32,11 @@ public class RepoStats implements IListener<MessageReceivedEvent> {
                                 "**Open Issues**: " + repository.getOpenIssues() + "\n" +
                                 "**URL**: " + repository.getHtmlUrl());
             } catch (Exception e) {
+                try {
+                    discordClient.getChannelByID(channel).sendMessage("Error: " + e.getMessage());
+                } catch (Exception error) {
+                    System.out.println("[RepoStats] " + error.getMessage());
+                }
                 System.out.println("[RepoStats] " + e.getMessage());
             }
         }
