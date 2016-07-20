@@ -1,4 +1,4 @@
-package ml.rhodes.discordbot.commands;
+package ml.rhodes.discordbot.commands.admin;
 
 import sx.blah.discord.api.IListener;
 import sx.blah.discord.handle.impl.events.DiscordDisconnectedEvent;

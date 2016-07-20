@@ -1,6 +1,9 @@
 package ml.rhodes.discordbot;
 
-import ml.rhodes.discordbot.commands.*;
+import ml.rhodes.discordbot.commands.Help;
+import ml.rhodes.discordbot.commands.Weather;
+import ml.rhodes.discordbot.commands.Youtube;
+import ml.rhodes.discordbot.commands.admin.*;
 import ml.rhodes.discordbot.commands.github.RepoStats;
 import sx.blah.discord.api.EventSubscriber;
 import sx.blah.discord.api.IListener;
