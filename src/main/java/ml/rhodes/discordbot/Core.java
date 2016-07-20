@@ -19,8 +19,13 @@ public class Core {
         } else {
             config = ConfigFactory.load(System.getenv("ENV"));
         }
-        if (args.length < 1)
-            System.out.print("You need to specify a token as an argument");
+        if (args.length < 1) {
+            if (!config.getString("discord.token").isEmpty()) {
+                apiKey = config.getString("discord.token");
+            } else {
+                System.out.print("You need to specify a token as an argument or provide one in the config");
+            }
+        }
         apiKey = args[0];
         discordClient = getClient(apiKey);
         discordClient.getDispatcher().registerListener(new Ready());
