@@ -13,7 +13,7 @@ public class ChangeGame implements IListener<MessageReceivedEvent> {
         Boolean command = event.getMessage().getContent().startsWith("-changegame");
         String[] args = event.getMessage().getContent().split(" ");
         StringBuilder game = new StringBuilder();
-        if (command && event.getMessage().getAuthor().getDiscriminator().equals(config.getString("discord.owner"))) {
+        if (command && event.getMessage().getAuthor().getID().equals(config.getString("discord.owner"))) {
             try {
                 if (args.length >= 1) {
                     for (int i = 1; i < args.length; i++) {
@@ -21,6 +21,12 @@ public class ChangeGame implements IListener<MessageReceivedEvent> {
                     }
                 }
                 discordClient.updatePresence(false, Optional.of(game.toString()));
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        } else if (!event.getMessage().getAuthor().getID().equals(config.getString("discord.owner"))) {
+            try {
+                discordClient.getChannelByID(event.getMessage().getChannel().getID()).sendMessage("Sorry " + event.getMessage().getAuthor() + " you're not authorized to do that");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }

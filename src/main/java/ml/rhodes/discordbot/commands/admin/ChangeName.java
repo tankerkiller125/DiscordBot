@@ -10,7 +10,7 @@ public class ChangeName implements IListener<MessageReceivedEvent> {
     public void handle(MessageReceivedEvent event) {
         Boolean command = event.getMessage().getContent().startsWith("-changename");
 
-        if (command && event.getMessage().getAuthor().getDiscriminator().equals(config.getString("discord.owner"))) {
+        if (command && event.getMessage().getAuthor().getID().equals(config.getString("discord.owner"))) {
             try {
                 discordClient.changeUsername(event.getMessage().getContent().split(" ")[1]);
             } catch (Exception e) {

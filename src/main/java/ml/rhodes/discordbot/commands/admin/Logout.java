@@ -11,7 +11,7 @@ public class Logout implements IListener<MessageReceivedEvent> {
         Boolean command = event.getMessage().getContent().startsWith("-logout");
         String channel = event.getMessage().getChannel().getID();
 
-        if (command && event.getMessage().getAuthor().getDiscriminator().equals(config.getString("discord.owner"))) {
+        if (command && event.getMessage().getAuthor().getID().equals(config.getString("discord.owner"))) {
             try {
                 discordClient.getChannelByID(channel).sendMessage("Exiting");
                 discordClient.logout();

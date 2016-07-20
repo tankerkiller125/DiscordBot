@@ -14,10 +14,13 @@ public class Core {
     public static Config config = null;
 
     public static void main(String[] args) throws Exception {
-        if (System.getenv("ENV") != null) {
+        final String environment = System.getenv("ENV");
+        if (environment.isEmpty()) {
+            System.out.println("Environment: Default");
             config = ConfigFactory.load();
         } else {
-            config = ConfigFactory.load(System.getenv("ENV"));
+            System.out.println("Environment: " + environment);
+            config = ConfigFactory.load(environment);
         }
         if (args.length < 1) {
             if (!config.getString("discord.token").isEmpty()) {

@@ -12,7 +12,7 @@ public class ChangeAvatar implements IListener<MessageReceivedEvent> {
         Boolean command = event.getMessage().getContent().startsWith("-changeavatar");
         String[] args = event.getMessage().getContent().split(" ");
 
-        if (command && event.getMessage().getAuthor().getDiscriminator().equals(config.getString("discord.owner"))) {
+        if (command && event.getMessage().getAuthor().getID().equals(config.getString("discord.owner"))) {
             try {
                 discordClient.changeAvatar(Image.forUrl("png", args[1]));
             } catch (Exception e) {
