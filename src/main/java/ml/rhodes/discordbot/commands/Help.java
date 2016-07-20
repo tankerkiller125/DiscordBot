@@ -17,7 +17,13 @@ public class Help implements IListener<MessageReceivedEvent> {
                         "    **-help** : Gives you this menu\n" +
                         "    **-weather {city},{country code (optional)}** : Current weather for that city\n" +
                         "    **-youtube {id}** : Get youtube stats\n" +
-                        "    **-repostats {owner}/{repository}** : Get GitHub repository stats";
+                        "    **-repostats {owner}/{repository}** : Get GitHub repository stats\n" +
+                        "\n" +
+                        "__**Admin Only:**__\n" +
+                        "    **-changegame {text for game} : Change the game the bots playing\n" +
+                        "    **-changeavatar {url to a PNG} : Change avatar to the PNG at the URL provided\n" +
+                        "    **-changename {newUsername} : Change the bots username\n" +
+                        "    **-logout** : Does exactly what it sounds like would do";
 
 
         if (command) {

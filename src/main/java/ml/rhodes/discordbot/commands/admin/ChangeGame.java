@@ -24,12 +24,6 @@ public class ChangeGame implements IListener<MessageReceivedEvent> {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-        } else if (!event.getMessage().getAuthor().getID().equals(config.getString("discord.owner"))) {
-            try {
-                discordClient.getChannelByID(event.getMessage().getChannel().getID()).sendMessage("Sorry " + event.getMessage().getAuthor() + " you're not authorized to do that");
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
         }
     }
 }

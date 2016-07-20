@@ -9,7 +9,7 @@ import sx.blah.discord.util.DiscordException;
 public class Core {
 
     public static IDiscordClient discordClient;
-    public static String version = "0.0.2";
+    public static String version = "1.1.0";
     public static String apiKey = null;
     public static Config config = null;
 
