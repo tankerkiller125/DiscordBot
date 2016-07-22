@@ -3,7 +3,7 @@ package ml.rhodes.discordbot;
 import sx.blah.discord.api.IListener;
 import sx.blah.discord.handle.impl.events.MessageReceivedEvent;
 
-public class Logger implements IListener<MessageReceivedEvent> {
+class Logger implements IListener<MessageReceivedEvent> {
     public void handle(MessageReceivedEvent event) {
         try {
             if(!event.getMessage().getChannel().isPrivate()) {

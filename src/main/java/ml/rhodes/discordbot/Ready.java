@@ -11,7 +11,7 @@ import sx.blah.discord.handle.impl.events.ReadyEvent;
 
 import static ml.rhodes.discordbot.Core.discordClient;
 
-public class Ready implements IListener<ReadyEvent> {
+class Ready implements IListener<ReadyEvent> {
     @EventSubscriber
     public void handle(ReadyEvent event) {
         System.out.println("The bot is connected");

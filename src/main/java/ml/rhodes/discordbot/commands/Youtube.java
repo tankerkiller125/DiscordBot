@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static ml.rhodes.discordbot.Core.config;
 import static ml.rhodes.discordbot.Core.discordClient;
 
 public class Youtube implements IListener<MessageReceivedEvent> {
@@ -56,20 +57,20 @@ public class Youtube implements IListener<MessageReceivedEvent> {
         }
     }
 
-    public String getVideoID(String videoUrl) throws MalformedURLException {
+    private String getVideoID(String videoUrl) throws MalformedURLException {
         URL url = new URL(videoUrl);
         String query = url.getQuery();
         Map<String, String> map = Splitter.on('&').trimResults().withKeyValueSeparator("=").split(query);
         return map.get("v");
     }
 
-    public Video getStats(String videoURL) throws IOException{
+    private Video getStats(String videoURL) throws IOException {
         youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
             @Override
             public void initialize(HttpRequest httpRequest) throws IOException {
             }
         }).setApplicationName("TankBot").build();
-        YouTube.Videos.List list = youtube.videos().list("statistics").setId(getVideoID(videoURL)).setKey("AIzaSyCBB1UY5PFQ8jtEpUIM7wjAu6kzBaI44-g");
+        YouTube.Videos.List list = youtube.videos().list("statistics").setId(getVideoID(videoURL)).setKey(config.getString("apiKeys.youtube"));
         return list.execute().getItems().get(0);
     }
 }
