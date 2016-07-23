@@ -3,13 +3,11 @@ package ml.rhodes.discordbot;
 import ml.rhodes.discordbot.commands.admin.Disconnect;
 import ml.rhodes.discordbot.commands.admin.Reload;
 import ml.rhodes.discordbot.util.ClassLoader;
-import sx.blah.discord.api.EventSubscriber;
 import sx.blah.discord.api.IListener;
 import sx.blah.discord.handle.impl.events.ReadyEvent;
 
 import static ml.rhodes.discordbot.Core.discordClient;
 class Ready implements IListener<ReadyEvent> {
-    @EventSubscriber
     public void handle(ReadyEvent event) {
         System.out.println("The bot is connected");
 
