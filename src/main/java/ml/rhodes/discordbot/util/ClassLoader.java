@@ -14,7 +14,7 @@ import static ml.rhodes.discordbot.Core.discordClient;
 
 public class ClassLoader {
 
-    static IListener[] classes = {
+    private static IListener[] classes = {
             // Admin Commands
             new Logout(),
             new ChangeAvatar(),
