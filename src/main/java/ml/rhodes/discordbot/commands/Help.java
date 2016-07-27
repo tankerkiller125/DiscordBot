@@ -27,7 +27,9 @@ public class Help implements IListener<MessageReceivedEvent> {
                         "    **-changegame {text for game}** : Change the game the bots playing\n" +
                         "    **-changeavatar {url to a PNG}** : Change avatar to the PNG at the URL provided\n" +
                         "    **-changename {newUsername}** : Change the bots username\n" +
-                        "    **-logout** : Does exactly what it sounds like would do";
+                        "    **-logout** : Does exactly what it sounds like would do\n" +
+                        "\n" +
+                        "For additional help join: https://discord.gg/0qwPf0WZWbygCeXG";
 
 
         if (command) {
