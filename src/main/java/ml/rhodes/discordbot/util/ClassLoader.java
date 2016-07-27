@@ -7,6 +7,7 @@ import ml.rhodes.discordbot.commands.admin.ChangeAvatar;
 import ml.rhodes.discordbot.commands.admin.ChangeGame;
 import ml.rhodes.discordbot.commands.admin.ChangeName;
 import ml.rhodes.discordbot.commands.admin.Logout;
+import ml.rhodes.discordbot.commands.github.RepoLinker;
 import ml.rhodes.discordbot.commands.github.RepoStats;
 import sx.blah.discord.api.IListener;
 
@@ -25,7 +26,10 @@ public class ClassLoader {
             new Help(),
             new Weather(),
             new Youtube(),
-            new RepoStats()
+
+            // GitHub Commands
+            new RepoStats(),
+            new RepoLinker()
     };
 
     public void unregister() {
