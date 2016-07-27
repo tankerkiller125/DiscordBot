@@ -16,7 +16,7 @@ public class RepoLinker implements IListener<MessageReceivedEvent> {
     public void handle(MessageReceivedEvent event) {
         String channel = event.getMessage().getChannel().getID();
 
-        String re1 = "((?:[a-z][a-z]*[0-9]*[a-z0-9\\w-]*))";    // Alphanumeric
+        String re1 = "((?:[a-z][a-z]*[0-9]*[a-z0-9\\w-]*))";    // Alphanumeric with Dashes and Underlines
         String re2 = "((?:\\/[\\w\\.\\-]+)+)";    // Path
 
         Pattern pattern = Pattern.compile(re1 + re2, Pattern.CASE_INSENSITIVE | Pattern.DOTALL | Pattern.MULTILINE);
