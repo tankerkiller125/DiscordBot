@@ -9,7 +9,7 @@ import sx.blah.discord.util.DiscordException;
 public class Core {
 
     public static IDiscordClient discordClient;
-    public static String version = "1.1.0";
+    public static String version = "1.1.2";
     public static String apiKey = null;
     public static Config config = null;
 
@@ -22,14 +22,13 @@ public class Core {
             System.out.println("Environment: " + environment);
             config = ConfigFactory.load(environment);
         }
-        if (args.length < 1) {
+        if (args.length >= 1) {
+            apiKey = args[0];
+        } else {
             if (!config.getString("discord.token").isEmpty()) {
                 apiKey = config.getString("discord.token");
-            } else {
-                System.out.print("You need to specify a token as an argument or provide one in the config");
             }
         }
-        apiKey = args[0];
         discordClient = getClient(apiKey);
         discordClient.getDispatcher().registerListener(new Ready());
     }
