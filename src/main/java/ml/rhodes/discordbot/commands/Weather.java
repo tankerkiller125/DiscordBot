@@ -4,7 +4,7 @@ import org.bitpipeline.lib.owm.OwmClient;
 import org.bitpipeline.lib.owm.WeatherData;
 import org.bitpipeline.lib.owm.WeatherData.WeatherCondition;
 import org.bitpipeline.lib.owm.WeatherStatusResponse;
-import sx.blah.discord.api.IListener;
+import sx.blah.discord.api.events.IListener;
 import sx.blah.discord.handle.impl.events.MessageReceivedEvent;
 
 import java.net.URLEncoder;
@@ -32,9 +32,9 @@ public class Weather implements IListener<MessageReceivedEvent> {
                     WeatherData weatherData = currentWeather.getWeatherStatus().get(0);
                     WeatherCondition weatherCondition = weatherData.getWeatherConditions().get(0);
                     Double celcius = weatherData.getTemp() - 273.15;
-                    Double fahrenheit = celcius * 9/5 + 32;
+                    Double fahrenheit = celcius * 9 / 5 + 32;
                     discordClient.getChannelByID(channel).sendMessage(
-                            "**Temperature**: " + weatherData.getTemp() + "K, " + celcius.toString().substring(0,5) + "C, " + fahrenheit.toString().substring(0,5) + "F\n" +
+                            "**Temperature**: " + weatherData.getTemp() + "K, " + celcius.toString().substring(0, 5) + "C, " + fahrenheit.toString().substring(0, 5) + "F\n" +
                                     "**Humidity**: " + weatherData.getHumidity() + "%\n" +
                                     "**Description**: " + weatherCondition.getDescription() + "\n" +
                                     "**Pressure**: " + weatherData.getPressure()

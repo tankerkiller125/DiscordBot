@@ -15,7 +15,7 @@ public class Core {
 
     public static void main(String[] args) throws Exception {
         final String environment = System.getenv("ENV");
-        if (environment.isEmpty()) {
+        if (environment == null) {
             System.out.println("Environment: Default");
             config = ConfigFactory.load();
         } else {

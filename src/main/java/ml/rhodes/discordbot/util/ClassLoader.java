@@ -1,17 +1,11 @@
 package ml.rhodes.discordbot.util;
 
-import ml.rhodes.discordbot.commands.Help;
-import ml.rhodes.discordbot.commands.Weather;
-import ml.rhodes.discordbot.commands.Youtube;
+import ml.rhodes.discordbot.commands.*;
 import ml.rhodes.discordbot.commands.admin.ChangeAvatar;
 import ml.rhodes.discordbot.commands.admin.ChangeGame;
 import ml.rhodes.discordbot.commands.admin.ChangeName;
 import ml.rhodes.discordbot.commands.admin.Logout;
-import ml.rhodes.discordbot.commands.github.CommitLinker;
-import ml.rhodes.discordbot.commands.github.IssueLinker;
-import ml.rhodes.discordbot.commands.github.RepoLinker;
-import ml.rhodes.discordbot.commands.github.RepoStats;
-import sx.blah.discord.api.IListener;
+import sx.blah.discord.api.events.IListener;
 
 import static ml.rhodes.discordbot.Core.discordClient;
 
@@ -25,15 +19,13 @@ public class ClassLoader {
             new ChangeName(),
 
             // Standard Commands
-            new Help(),
             new Weather(),
             new Youtube(),
+            new Help(),
+            new About(),
 
-            // GitHub Commands
-            new RepoStats(),
-            new RepoLinker(),
-            new IssueLinker(),
-            new CommitLinker()
+            //MC Commands
+            new Servers()
     };
 
     public void unregister() {

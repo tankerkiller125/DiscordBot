@@ -9,7 +9,7 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.Video;
 import com.google.common.base.Splitter;
-import sx.blah.discord.api.IListener;
+import sx.blah.discord.api.events.IListener;
 import sx.blah.discord.handle.impl.events.MessageReceivedEvent;
 
 import java.io.IOException;
@@ -27,6 +27,7 @@ public class Youtube implements IListener<MessageReceivedEvent> {
     private static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
     private static final JsonFactory JSON_FACTORY = new JacksonFactory();
     private static YouTube youtube;
+
     public void handle(MessageReceivedEvent event) {
         Boolean command = event.getMessage().getContent().startsWith("-youtube");
         String channel = event.getMessage().getChannel().getID();

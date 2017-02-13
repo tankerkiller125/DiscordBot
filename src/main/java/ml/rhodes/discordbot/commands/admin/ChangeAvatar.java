@@ -1,10 +1,10 @@
 package ml.rhodes.discordbot.commands.admin;
 
-import sx.blah.discord.api.IListener;
+import ml.rhodes.discordbot.util.User;
+import sx.blah.discord.api.events.IListener;
 import sx.blah.discord.handle.impl.events.MessageReceivedEvent;
 import sx.blah.discord.util.Image;
 
-import static ml.rhodes.discordbot.Core.config;
 import static ml.rhodes.discordbot.Core.discordClient;
 
 public class ChangeAvatar implements IListener<MessageReceivedEvent> {
@@ -12,7 +12,7 @@ public class ChangeAvatar implements IListener<MessageReceivedEvent> {
         Boolean command = event.getMessage().getContent().startsWith("-changeavatar");
         String[] args = event.getMessage().getContent().split(" ");
 
-        if (command && event.getMessage().getAuthor().getID().equals(config.getString("discord.owner"))) {
+        if (command && User.isOwner(event.getMessage().getAuthor().getID())) {
             try {
                 discordClient.changeAvatar(Image.forUrl("png", args[1]));
             } catch (Exception e) {
